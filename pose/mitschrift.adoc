@@ -1,0 +1,90 @@
+= Mitschrift
+
+== 17.09.2025
+
+=== nullability
+? 
+?.
+?? 
+
+* wenn links null is ist rechts auch null
+
+??= 
+
+=== record
+
+* geht schneller
+* alles gleich immutable
+* man muss keine Kopie machen wenn Daten geändert werden
+
+.struct record
+* record struct ist nicht immutable record schon
+* 16 byte Obergrenze
+
+[source, c#]
+----
+var sarah = new Student(12, "Sarah", "Ngimbi", 51.2D)
+
+//sarah.LastName = "Kis" -> geht nicht weil alle Properties read only sind
+var sarah2 = sarah with( 
+    LastName="Kis"
+)
+
+public sealed record Student(int Id, string FirstName, string LastName, double Weight) // für alle Variablen im Constructor werden Properties erstellt
+----
+
+[source, c#]
+----
+public readonly record strucct Student(int Id, string FirstName, string LastName, double Weight)
+----
+
+=== higher order functions
+Eine Methode wird einer Methode übergeben
+
+=== nested types
+private Klasse in einer anderen
+
+=== local functions
+Funktion in Funktion
+
+===
+
+=== IDisposable & IAsyncDisposable
+* using, var using 
+* recoursen zumachen oder so
+
+=== primary Constructor
+man kann neben der Klasse direkt Parameter mitgeben
+
+[source, c#]
+----
+class Student(int Id, string FirstName, ...) // nicht readonly
+----
+
+=== partial Klassen/source code generator
+* man kann eine Klasse über mehrere Dateinen auslegen
+* Compiler macht viel bei der Laufzeit
+
+
+=== Date & Time
+* kompliziert 
+* nutzen .NET framework um Zeitzonen-fehler zu vermeiden
+.Lösung: Nodatime
+* Instant
+* ZoneDate
+* LocalDate
+* Period
+* Duration
+
+[source, c#]
+----
+var leoTimeZone = DateTimeZoneProvider.Tzdb["Europe/Vienna"];
+Instant now = SystemClock.Instant.GetCurrentTime();
+----
+
+=== Allgemein
+int = 4 byte
+string = 8 byte
+... gibts in c# auch
+AOT = ich brauche keine Laufzeit, aber starte recht schnell
+* serverless computing, handyapp

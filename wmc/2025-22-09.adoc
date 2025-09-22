@@ -1,0 +1,27 @@
+= JUNIT & REST-ASSURED
+* Tests sollen verlässlich, reproduzierbar und unabhängig vom Zufall laufen
+
+
+== Unit Test
+* Unit Test testet eine Unit
+** Unit ist ein kleiner Teil des Codes z.b. eine Methode
+** schnell geschrieben
+** gute Testabdeckung
+** sollen seperiert werden
+** es reicht ein Test für einen Fall
+
+
+
+== REST-ASSURED
+* für REST API points
+* ist in junit eingebaut
+* kann automatisiert verwendet werden
+
+== Allgemeines
+
+JUNIT = Java Unit +
+NUNIT = .NET Unit
+
+package-private = private nur dass jede Klasse in dem selben package diese auch sieht
+
+import static org,junit.jupiter.api.Assertions.*; holt sich alle statischen Methoden von Assertions
