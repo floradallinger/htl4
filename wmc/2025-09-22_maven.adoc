@@ -1,0 +1,48 @@
+= Maven & Quarkus
+
+== Maven
+* lädt Dependencies herunter
+* führt Build aus
+* ohne Build - Compilor
+* lädt im user folder im .m2 folder alle dependencies rein
+* repository in dem maven nachsieht bzgl dependencies (maven central repository)
+
+.Unterschied maven - gradle
+Maven
+* vorgefertigtes build
+Gradle
+* Gradle ist maven zu einschränkend
+* eigene Programmiersprache zum build beschreiben (dsl [groovie, kotlin und irgendwas drittes])
+* frei programmierbar
+* ca. 10x langsamer
+
+=== dependency
+dependency: name, package, versionsnummer
+transitive dependencies = dependencies von dependencies
+
+=== POM
+* braucht man um Maven auszuführen
+* Project Object Model = POM
+* Entwicklungsumgebungs unabhängig
+* hier stehen dependencies und build drinnen
+
+=== Build
+* mehrere Phasen nicht nur kompilieren
+* source code files zusammensuchen
+* dependencies suchen
+
+
+== Quarkus
+* framework für REST server
+** man kann angeben welche Teile man haben möchte
+* modulares Serversystem mit dem man modulierbares backend schreiben kann und meine Dependencies von Anfang an integrieren kann
+* Ökosystem bei dem ich die Entscheidung habe was ich verwenden will
+
+
+== Allgemeines
+.semantic versioning
+major minor build
+1    . 11  . 2
+build = bug fixes
+minor = kleine Änderungen
+major = 

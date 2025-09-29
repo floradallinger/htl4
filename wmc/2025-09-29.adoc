@@ -1,0 +1,39 @@
+= CDI
+
+früher = Ausführen von jar files um Server zu starten (Java EE)
+* Versionen, etc. wurden kostenpflichtig gemacht
+heute = Docker (wuhu)
+* man kann Versionen nehmen die man braucht
+
+
+Bei @inject in java werden die variablen von dem constructor geladen
+
+
+== Bean
+* Manage Object
+** Objekt das vom Server verstanden/gelesen/ladet/etc wird
+
+== Container managed
+* etwas/jemand, der den bean managed
+
+
+
+
+== Allgemeines
+.Java EE vs. Java SE
+* EE
+** Enterprise Edition
+* SE
+* für Server
+* Problem mit Versionen
+** Standard Edition
+* Normales Java
+
+
+.Seperation of Concerns
+* Objekte sollen nach Tätigkeit getrennt werden
+* man braucht mehrere Services
+
+.Inversion of Control
+* Objekt, das Services braucht, baut sich diese nicht selber zusammen, sondern bekommt diese von außen
+* praktisch zum testen

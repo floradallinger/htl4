@@ -1,6 +1,6 @@
-# WMC - Wiederholung HTTP
+= WMC - Wiederholung HTTP
 
-## 1ste Stunde
+== 1ste Stunde
 
 * Maturafrage: Was sind die wichtigsten REST Abfragen
   * GET, POST, PUT, PATCH, DELETE
@@ -16,7 +16,7 @@
 * e-tag = daten werden gehasht und an den client gesendet mit dem e-tag. Dieser wird später wieder aus dem cache geladen. Somit erspart man sich die Übertragung von Daten. (Status Code: 304)
 * alles im Backend, der kein Fehler vom user ist, fällt in den StatusCode 500
 
-## 2te Stunde
+== 2te Stunde
 
 * private key
   * Schlüssel der immer nur der Client kennt

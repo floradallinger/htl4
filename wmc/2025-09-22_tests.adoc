@@ -25,3 +25,4 @@ NUNIT = .NET Unit
 package-private = private nur dass jede Klasse in dem selben package diese auch sieht
 
 import static org,junit.jupiter.api.Assertions.*; holt sich alle statischen Methoden von Assertions
+
