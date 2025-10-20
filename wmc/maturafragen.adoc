@@ -7,14 +7,14 @@
 * GET, PUT, DELETE, (1/2 PATCH [= parital Update])
 
 .Mit welchen zwei Methoden kann man einen Rest service cachen und welche Vorteile habe ich
-expires caching -> 10min lang
+expires caching
 
 * = wie alt darf es beim client sein, bis er wieder holen muss
 * @expires zu einem Datum über den Endpoint schreiben
 ** Client bekommt, dass dann und merkt sich bis wann er nicht fragen muss
 * Verhindern, dass ununterbrochen abgefragt wird
 
-etag caching -> antwort vorher merken
+etag caching
 
 * = hash von Daten, die Server schickt
 * Server baut response auf und macht hash aus der payload
@@ -27,5 +27,4 @@ etag caching -> antwort vorher merken
 * vergleicht tags => wenn es der gleiche ist bekommt client 304 "Not Modified"
 * Man spart sich also das Verschicken, aber nicht das Zusammenbauen der Response
 * setzt man ein bei großen Datenmengen
-* bei große Datenmengen
 

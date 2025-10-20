@@ -1,0 +1,96 @@
+= JPA
+:imagesdir: images
+
+* = Java Persistance API
+* bisher volatile Datenspeicherung
+* dafür verwenden wir relationale DB
+* bisher alles "zu Fuß" gemacht in java
+** jdbc
+* booleans gehen
+
+== Aufbau
+image:aufbau_jpa.png[]
+
+== Entity
+POJO = Plain Old Java Object = Java bean
+
+=== Entity States
+* Transient = egal
+* Persistend/Managed
+** @Entity über Klasse
+* Detached
+** nicht mehr gemanaged
+* Removed
+** löschen
+
+image:entity_states.png[]
+
+=== Annotation
+.Datenattribute
+* man hat bereits eine Datenbank es lädt aber in die tabelle alles rein die so heißt wie der name
+* darüber werden entites verarbeitet
+* alles in der Objekt klasse drinnen
+* das Objekt in der DB bildet mich als Java Objekt ab
+* @Entity
+** name muss eindeutig sein
+** würde den gleichen Namen vergeben wie die Tabelle
+* @Table(name="item")
+** namen selber vergeben
+* @Column(name="isBlue", length=50, nullable=false, unique=false)
+** ein Attribut wird in einer Spalte landen
+** Standardmäßig kommt alles in eine Spalte
+* @Enumerated(EnumType.STRING)
+** besser zum lesen
+** default = ordinal (speichert index von enum)
+* @Id @GeneratedValue
+** wie generiert man einen key
+** nur für single column keys
+** strategy: AUTO, IDENTITY, SEQUENCE,TABLE
+* @Temporal
+** für Date/Time/TimeStamp
+
+* @Basic(fetch=FetchType.LAZY)
+** wenn man beim Laden noch nicht alle Spalten benötigt
+** wird mit lazy erst beim ersten Zugriff geladen
+** wann man die daten von der db gettet
+* @Lob
+** CLOB (Character Large Object)
+** BLOB (Binary Large Object)
+* @OrderColumn
+** schreibt alle daten direkt geordnet rein
+** order by
+* @Transient
+** um eine property aus einer Klasse nicht in die DB zu bekommen
+
+== Querys
+* in POJO klasse query annotieren
+* zwei Pattern um db logik zu gestalten
+** active record
+*** speichern im pojo drinnen
+*** eigene methode mit save
+*** leicht zum speichern, schwer zum selecten
+** unitofwork pattern
+*** klasse die das Speichern für einen übernimmt
+*** nicht im objekt
+*** bringt seperation of conern
+
+.@NamedQuery
+* kann sich selber mappen
+@NamedNativeQueries
+* kann sich nicht selbst mappen
+* zb beim joinen wenn ich mehrere Columns aus verschiedenen Tabellen selecte
+
+
+
+
+== Allgemeine Anmerkungen
+* orm (objekte in relationen mappen)
+* volatile = gegenteil persistent
+* persistent = permanent speichern
+* serverseitig nimmt man enterprise editions
+* ISO 86 01 (screen notation von datum)
+* preparedstatement um sql injections zu vermeiden
+* jpql funktioniert auf jeder datenbank
+* mit * abfragen -> schlecht wenn man eine column löscht
+
+
