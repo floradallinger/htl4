@@ -1,0 +1,52 @@
+= JPA - transactions
+
+== Transactions
+* normalerweise spricht man mit sql mit einer datenbank
+* Problem: java hat kein sql ( :[ )
+* z.B. in einer Bestellung werden mehrere Tabellen verwendet
+* Achtsamkeit auf Zusammenhängende SQL Statements, die als eine Einheit auftreten (Transaktion)
+** im einfachsten Fall: eine Transaktion = ein SQL Befehl
+* für select statements oder erstellen neuer Tabellen/Spalten braucht man keine Transaktion
+
+* Eine Transaktion ist immer
+** atomar (entweder alles speichern oder nichts)
+** konsistenz
+** isoliert
+** dauerhaft gespeichert
+
+== AOP (Aspekt-oriented Programming)
+* nebensächlich für den Moment
+
+== Entity Manager
+* @Transactional einfache und meist genutze Variante
+* Problem bei langen Methoden
+** Datenbank wird lange beansprucht
+* Man könnte die db Methoden auslagern -> wenn dies nicht geht gibt es einen Entity Manager
+
+* Entity Manager ist zuständig für die Entities
+** Wenn eine Transaktion geschlossen ist hat er keinen Transaktions-Kontent
+*** nach jedem Commit braucht man einen neuen Entity Manager
+
+* eine billige und einfache Variante eine db Connection zu verwalten (wie unit von letztem Jahr wmc, nur schon für einen gemacht)
+* man schreibt kein sql, sondern ändert die Klassen in java und speichert diesee mit dem entity manager
+* detached -> wenn der Entitiy Manager nicht draufschaut
+
+== @Transactional
+* container managed
+* kann nicht nur auf Methoden angewendet werden
+* DAO (Data Access Object) um @Transactional drüber zu schreiben
+** zb DAO für Kunde der save, delete und update hat
+
+
+== Allgemein
+
+* checked expetion
+** zb IO Exeptions
+** muss man deklarieren damit ein rollback bemacht wird
+
+* unchecked
+** muss man nicht deklarieren
+
+* Error
+** eindeutig definierter Zustand
+** z.B. out of memory

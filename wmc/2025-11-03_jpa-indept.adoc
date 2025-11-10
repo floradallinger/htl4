@@ -1,0 +1,45 @@
+= JPA - in dept
+
+== Cascade
+
+
+== Cascade Types
+* "was passiert in der db und kann ich es weitergeben"
+
+=== Cascade type merge
+* wenn etwas mit dem parent passiert, passiert es mit den children auch
+* wenn der parent removed wird, werden alle children auch remove
+* blöd wenn man es auf alle anwendet
+
+=== Cascade type refresh
+* wenn parent geladen soll -> children auch geladen
+
+=== Cascade type detach
+* gibts halt auch so
+
+=== Cascade type all
+* nimmt alle oberen
+* nur für "tightly coupled child entities"
+** z.B. compositions
+
+
+== Fetch types
+* definiert, wann etwas geladen wird
+* direkt fetchen oder erst wenn man es benötigt
+* für relationen (standard lazy) oder felder (standard eager )
+* kommt auf den driver usw. darauf an ob es funktioniert
+* JPA könnte es, wenn die DB es nicht kann würde es emuliert werden
+
+[source, java]
+----
+@OneToMany(fetch = FetchType.EAGER)
+private List<Address> adressen;
+----
+
+=== Fetch type eager
+* lädt alle entities direkt mit ihrem parent
+* größere joins (performance ?)
+
+
+=== Fetch type lazy
+* Relationen werden nur geladen, wenn man darauf zugreift

@@ -80,6 +80,26 @@ image:entity_states.png[]
 * kann sich nicht selbst mappen
 * zb beim joinen wenn ich mehrere Columns aus verschiedenen Tabellen selecte
 
+== Assotiations Mapping
+* Relationale Datenbank san datenbanken mit relationen
+
+=== One to one
+* eins zu eins relation
+* "sinnlos" laut herr prof
+* Spezialfall: shared primary key
+** obwohl man beide Primary keys hat kann es passieren dass man die Daten aufteilen muss
+** einer fk constraint einer nicht
+** shared primary key = wenn man in einer tabelle eine zeile anlegt mit zb id 3 wird bei der anderen tabelle auch eine zeile mit der id 3 angelegt
+
+=== One to many
+* bei mehreren seite kommt die id dazu
+
+=== Many to many
+* man benutzt sets
+
+
+
+
 
 
 
@@ -92,5 +112,7 @@ image:entity_states.png[]
 * preparedstatement um sql injections zu vermeiden
 * jpql funktioniert auf jeder datenbank
 * mit * abfragen -> schlecht wenn man eine column löscht
+* immer long für id
+* ids einheitlich
 
 
