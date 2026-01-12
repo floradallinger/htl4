@@ -36,17 +36,34 @@
 * kann nicht nur auf Methoden angewendet werden
 * DAO (Data Access Object) um @Transactional drüber zu schreiben
 ** zb DAO für Kunde der save, delete und update hat
+* wenn es mit @transactional anotiert ist startet der container (z.B. Quarkus) automatisch eine Transaktion
 
+=== Optional Atributes
+rollBackOn/dontRollbackOn kann man angeben welche Klasse [nicht] gespeichert werden sollen
+
+https://quarkus.io/guides/hibernate-orm^[quarkus tutorial]
 
 == Allgemein
 
-* checked expetion
-** zb IO Exeptions
-** muss man deklarieren damit ein rollback bemacht wird
+.checked expetion
+* zb IO Exeptions
+* muss man deklarieren damit ein rollback bemacht wird
 
-* unchecked
-** muss man nicht deklarieren
+.unchecked
+* muss man nicht deklarieren
 
-* Error
-** eindeutig definierter Zustand
-** z.B. out of memory
+.Error
+* eindeutig definierter Zustand
+* z.B. out of memory
+
+.tablescan
+* einen scan einer tabelle, der die ganze tabelle logt
+* einen Eintrag nach dem anderen full scan lesen
+
+.learning path
+* man kann sich anzeigen wie man in einer db sucht/abfragt
+
+
+=== Für den Test
+* einfaches datenbankmodell erstellen
+* des lesen/speichern/updaten/...

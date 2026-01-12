@@ -1,0 +1,16 @@
+= SSE
+
+
+== Service
+Man braucht zb einen service damit man transactional in den resources zu haben
+"In den resources will ich mich nicht um den Zugriff zur Datenbank scheren"
+
+== Für Test
+Eines von beiden Patterns:
+
+* Repository
+** `Person p = Personrepository.createPerson("Gerald", 28)`
+
+* Active Record
+** überall wo ich mit panache entity arbeite
+** `Person p = Person.create("Gerald", 28)`

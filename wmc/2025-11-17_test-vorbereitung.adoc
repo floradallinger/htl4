@@ -1,0 +1,33 @@
+= Test Vorbereitung
+
+== Schritte
+. Von https://code.quarkus.io/?e=rest-jackson&e=jdbc-postgresql&e=hibernate-orm-rest-data-panache&e=smallrye-openapi[quarkus^] folgende Packages auswählen und zip herunterladen
+
+REST JACKSON +
+HIBERNATE ORM +
+JDBC DRIVER - PostgreSQL
+
+[start=2]
+. Entities erstellen
+.. get und set setzen weil alle attribute private sind
+. Beziehungen überlegen und eingeben
+. Repositories für jede Entity erstellen
+. application properties = `quarkus.datasource.db-kind=postgresql`
+.. mvn quarkus:dev
+.. ctop
+.. Kontrolle `sudo systemctl status docker`
+... `sudo systemctl enable/start/restart/stop docker`
+.. Kontrolle `docker run hello-world`
+
+== Panache
+* Hilfsmittel, das die Aufgaben des Entity Managers übernimmt
+
+.Panache Unit of work
+* repository
+* ein panache repo ist an eine Entität gebunden
+
+== Architektur
+
+* Rest Frontend
+* Funktions Repo
+* Klassen von Panache Repo

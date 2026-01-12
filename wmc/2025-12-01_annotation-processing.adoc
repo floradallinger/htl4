@@ -1,0 +1,17 @@
+= Annotation Processing
+
+quarkus macht annotation processing on compile
+normalerweise rennt es on-startup (nicht bei jakarta)
+
+quarkus schaut auch named queries an und haut Fehler raus wenn sie scheiße sind
+
+== Java
+
+Java -> ByteCode -> JVM <- nativ
+
+von Java -> ByteCoe
+
+* type erasure
+
+=== Generics
+List <String> list;
