@@ -1,0 +1,46 @@
+= Websockets
+:icons: font
+
+https://htl.dev/md/technologies/WebSockets.md#41a83990-b868-4a0d-b034-9c1715e41f17[websocket^]
+
+[IMPORTANT]
+.wie erkennt man ob es sse oder rest endpoint ist ohne dass ich programmier
+protokoll
+bei sse steht sse da +
+bei rest halt http oder https
+
+
+
+."Websocket is ein anderes Biest"
+* in beide Richtungen asynchron
+** wie erkennt man ob es in beide Richtungen asynchron ist
+*** observer patterns
+*** Man schreibt einen handler und es wird erst ausgeführt wenns aufgerufen wird
+*** mit Websockets kann man jetzt Server und Client seitig was schreiben
+
+* genauso programmieren wie ein endpoint nur mit anderen Annotationen
+* immer eine Connection offen solang ich die Seite offen habe und nicht abgemeldet bin
+* hat binary
+
+* Größter Nachteil: Man kanns blocken
+
+
+
+== SSE
+
+Chat vom letzten Mal war sse
+
+* total cool laut Unterreiner
+* schwer zu blocken
+
+.Unterschied zu REST
+
+* Server schickt Client was ohne dass der Client was anfragt
+** gut bei z.B. Aktien
+
+* kein binary
+* sind immer stings
+* z.B. man muss Bilder encoden utf8
+
+
+

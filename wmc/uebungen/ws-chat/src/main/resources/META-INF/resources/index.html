@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quarkus Chat (WebSocket)</title>
+    <style>
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            margin: 2em;
+        }
+
+        textarea {
+            width: 50vw;
+            height: 300px;
+        }
+
+        #messageText {
+            width: 40vw;
+        }
+
+        input, button {
+            margin: 0.25em 0;
+        }
+    </style>
+</head>
+<body>
+<h2>Quarkus Chat (WebSocket)</h2>
+
+<div>
+    <label>
+        Server URL:
+        <input id="serverUrl" value="ws://localhost:8080/chat">
+    </label>
+    <button onclick="connect()">Connect</button>
+</div>
+
+<textarea id="messages" readonly></textarea>
+
+<div>
+    <label>
+        User ID:
+        <input id="userId" readonly>
+    </label><br>
+    <label>
+        Message:
+        <input id="messageText">
+    </label>
+    <button onclick="sendMessage()">Send</button>
+</div>
+<script>
+    let socket = null;
+    let userId = null;
+
+    // log system-messages in the textarea
+    function log(msg) {
+        const ta = document.getElementById("messages");
+        ta.value += msg + "\n";
+        ta.scrollTop = ta.scrollHeight;
+    }
+
+    // establish bidirectional connection
+    async function connect() {
+        const wsUrl = document.getElementById("serverUrl").value;
+        const httpBase = wsUrl.replace(/^ws/, "http").replace(/\/chat$/, "");
+
+        await registerConnection(httpBase);
+        await loadHistory(httpBase);
+        openWebSocket(wsUrl);
+    }
+
+    // register connection with the server (get ID)
+    async function registerConnection(baseUrl) {
+        const res = await fetch(baseUrl + "/connections");
+        userId = await res.text();
+        document.getElementById("userId").value = userId;
+        log("Connected as " + userId);
+    }
+// load chat-history via REST call
+    async function loadHistory(baseUrl) {
+        const res = await fetch(baseUrl + "/messages");
+        const history = await res.json();
+
+        const ta = document.getElementById("messages");
+        ta.value = "";
+
+        history.forEach(m => {
+            log(`[${m.timestamp}] ${m.userId}: ${m.text}`);
+        });
+
+        log("---- live messages ----");
+    }
+// open WebSocket for live messages
+    function openWebSocket(wsUrl) {
+        socket = new WebSocket(wsUrl);
+
+        socket.onopen = () => log("WebSocket connected");
+
+        socket.onmessage = e => {
+            const m = JSON.parse(e.data);
+            log(`[${m.timestamp}] ${m.userId}: ${m.text}`);
+        };
+
+        socket.onerror = () => log("WebSocket error");
+    }
+// send the message
+    function sendMessage() {
+        const text = document.getElementById("messageText").value;
+        if (!text || !socket) return;
+
+        socket.send(JSON.stringify({
+            userId: userId,
+            text: text,
+            timestamp: new Date().toISOString()
+        }));
+
+        document.getElementById("messageText").value = "";
+    }
+</script>
+
+</body>
+</html>
