@@ -1,2 +1,2 @@
-# htl4
-HTL Leonding 4te Klasse
+# HTL - 4
+HTL Leonding 4te Klasse Mitschrift
