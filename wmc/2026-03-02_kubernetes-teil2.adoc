@@ -1,0 +1,34 @@
+= K8s 
+
+Egal welche Umgebung darunter ist
+
+Man kann docker/PodMan/Vms/... nehmen
+
+Nodes können verschiedene setups haben
+
+Oberfläche ist da um zu sehen ob es läuft und ob eh alles da ist. Zeigt allerdings nicht genaue Informationen
+an solnage diese nicht
+
+
+== Befehle
+
+[source, bash]
+----
+minikube start
+minikube start --driver=docker
+#minikube start --nodes=3
+minikube dashboard
+minikube addons enable ingress
+----
+
+[source, bash]
+----
+kubectl cluster-info
+Kubectl get all
+kubectl get nodes
+kubectl get pods –all-namespaces
+kubectl create namespace k8stest
+kubectl apply -f <file>.yml
+kubectl apply -f target/kubernetes/kubernetes.yml -n k8stest
+kubectl logs [POD] -n [NAME_SPACE] --all-containers
+----

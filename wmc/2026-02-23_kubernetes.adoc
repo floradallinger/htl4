@@ -1,0 +1,8 @@
+= Kubernetes
+
+Pod = Docker compose file
+
+Ein Pod wird als eine Einheit betrachtet
+
+Man redet weniger von container und eher von pods
+
